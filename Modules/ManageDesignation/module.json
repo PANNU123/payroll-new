@@ -1,0 +1,13 @@
+{
+    "name": "ManageDesignation",
+    "alias": "managedesignation",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ManageDesignation\\Providers\\ManageDesignationServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

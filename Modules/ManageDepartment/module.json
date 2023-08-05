@@ -1,0 +1,13 @@
+{
+    "name": "ManageDepartment",
+    "alias": "managedepartment",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ManageDepartment\\Providers\\ManageDepartmentServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

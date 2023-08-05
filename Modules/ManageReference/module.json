@@ -1,0 +1,13 @@
+{
+    "name": "ManageReference",
+    "alias": "managereference",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ManageReference\\Providers\\ManageReferenceServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

@@ -1,0 +1,13 @@
+{
+    "name": "ManageShift",
+    "alias": "manageshift",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ManageShift\\Providers\\ManageShiftServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

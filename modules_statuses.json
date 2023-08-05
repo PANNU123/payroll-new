@@ -1,0 +1,19 @@
+{
+    "Article": true,
+    "Tag": true,
+    "Comment": true,
+    "Category": true,
+    "ManageEmployee": true,
+    "ManageReference": true,
+    "NoticeBoard": true,
+    "ManageReport": true,
+    "TaskManagement": true,
+    "ManageShift": true,
+    "ManageDepartment": true,
+    "ManageDesignation": true,
+    "LeaveCategory": true,
+    "SetWorkingDay": true,
+    "ManageHoliday": true,
+    "ManageZkSetting": true,
+    "Religion": true
+}

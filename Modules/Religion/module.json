@@ -1,0 +1,13 @@
+{
+    "name": "Religion",
+    "alias": "religion",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Religion\\Providers\\ReligionServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

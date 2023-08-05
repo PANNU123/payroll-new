@@ -1,0 +1,13 @@
+{
+    "name": "ManageZkSetting",
+    "alias": "managezksetting",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ManageZkSetting\\Providers\\ManageZkSettingServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

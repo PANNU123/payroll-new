@@ -1,0 +1,13 @@
+{
+    "name": "ManageReport",
+    "alias": "managereport",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ManageReport\\Providers\\ManageReportServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

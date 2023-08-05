@@ -1,0 +1,13 @@
+{
+    "name": "SetWorkingDay",
+    "alias": "setworkingday",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SetWorkingDay\\Providers\\SetWorkingDayServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

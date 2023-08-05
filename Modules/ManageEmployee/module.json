@@ -1,0 +1,13 @@
+{
+    "name": "ManageEmployee",
+    "alias": "manageemployee",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ManageEmployee\\Providers\\ManageEmployeeServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

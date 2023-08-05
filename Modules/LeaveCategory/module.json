@@ -1,0 +1,13 @@
+{
+    "name": "LeaveCategory",
+    "alias": "leavecategory",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\LeaveCategory\\Providers\\LeaveCategoryServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

@@ -1,0 +1,13 @@
+{
+    "name": "NoticeBoard",
+    "alias": "noticeboard",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\NoticeBoard\\Providers\\NoticeBoardServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

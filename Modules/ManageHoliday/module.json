@@ -1,0 +1,13 @@
+{
+    "name": "ManageHoliday",
+    "alias": "manageholiday",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ManageHoliday\\Providers\\ManageHolidayServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
