@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Events\Auth\UserLoginSuccess;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +42,11 @@ class AuthenticatedSessionController extends Controller
             $request->session()->regenerate();
 
             event(new UserLoginSuccess($request, auth()->user()));
+            User::where('id',Auth::id())->update([
+                'last_login' => \Carbon\Carbon::now(),
+                'visitor' => request()->ip(),
+                'device' => shell_exec('getmac'),
+            ]);
 
             return redirect()->intended(RouteServiceProvider::HOME);
         }

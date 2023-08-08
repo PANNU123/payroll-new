@@ -23,6 +23,14 @@ return new class extends Migration
             $table->date('date_of_birth')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
+            //extra start
+            $table->timestamp('last_login')->nullable();
+            $table->ipAddress('visitor')->nullable();
+            $table->macAddress('device')->nullable();
+            $table->date('pass_exp_date')->nullable();
+            $table->integer('pass_exp_period')->unsigned()->default(3);
+            $table->boolean('pass_never_exp')->default(0);
+            //extra end
             $table->string('avatar')->nullable()->default('img/default-avatar.jpg');
             $table->tinyInteger('status')->default(1)->unsigned();
             $table->rememberToken();

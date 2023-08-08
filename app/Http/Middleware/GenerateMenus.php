@@ -168,6 +168,50 @@ class GenerateMenus
                 ->link->attr([
                     'class' => 'nav-link',
                 ]);
+            // Manage Employee
+            $accessControl = $menu->add('<i class="nav-icon fa-solid fa-user-gear"></i> Manage Company', [
+                'class' => 'nav-group',
+            ])
+                ->data([
+                    'order' => 2,
+                    'activematches' => [
+                        'admin/users*',
+                        'admin/roles*',
+                    ],
+                    'permission' => ['view_users', 'view_roles'],
+                ]);
+            $accessControl->link->attr([
+                'class' => 'nav-link nav-group-toggle',
+                'href' => '#',
+            ]);
+
+            // Submenu: Users
+            $accessControl->add('<i class="nav-icon fa-solid fa-user-group"></i> Group Company', [
+                'route' => 'backend.groupcompanies.index',
+                'class' => 'nav-item',
+            ])
+                ->data([
+                    'order'         => 77,
+                    'activematches' => ['admin/groupcompanies*'],
+                    'permission'    => ['view_groupcompanies'],
+                ])
+                ->link->attr([
+                    'class' => 'nav-link',
+                ]);
+
+            // Submenu: Roles
+            $accessControl->add('<i class="nav-icon fa-solid fa-user-shield"></i> Company', [
+                'route' => 'backend.companies.index',
+                'class' => 'nav-item',
+            ])
+                ->data([
+                    'order'         => 77,
+                    'activematches' => ['admin/companies*'],
+                    'permission'    => ['view_companies'],
+                ])
+                ->link->attr([
+                    'class' => 'nav-link',
+                ]);
 
 
             // Configuration
@@ -196,6 +240,32 @@ class GenerateMenus
                     'order'         => 77,
                     'activematches' => ['admin/religions*'],
                     'permission'    => ['view_religions'],
+                ])
+                ->link->attr([
+                    'class' => 'nav-link',
+                ]);
+
+
+            $accessControl->add('<i class="nav-icon fa-solid fa-user-shield"></i> Manage Section', [
+                'route' => 'backend.sections.index',
+                'class' => 'nav-item',
+            ])
+                ->data([
+                    'order'         => 77,
+                    'activematches' => ['admin/sections*'],
+                    'permission'    => ['view_sections'],
+                ])
+                ->link->attr([
+                    'class' => 'nav-link',
+                ]);
+            $accessControl->add('<i class="nav-icon fa-solid fa-user-shield"></i> Manage Location', [
+                'route' => 'backend.locations.index',
+                'class' => 'nav-item',
+            ])
+                ->data([
+                    'order'         => 77,
+                    'activematches' => ['admin/locations*'],
+                    'permission'    => ['view_locations'],
                 ])
                 ->link->attr([
                     'class' => 'nav-link',
@@ -242,6 +312,19 @@ class GenerateMenus
                     'class' => 'nav-link',
                 ]);
 
+            $accessControl->add('<i class="nav-icon fa-solid fa-user-shield"></i> Manage Titles', [
+                'route' => 'backend.titles.index',
+                'class' => 'nav-item',
+            ])
+                ->data([
+                    'order'         => 77,
+                    'activematches' => ['admin/titles*'],
+                    'permission'    => ['view_titles'],
+                ])
+                ->link->attr([
+                    'class' => 'nav-link',
+                ]);
+
             $accessControl->add('<i class="nav-icon fa-solid fa-user-shield"></i> Leave Category', [
                 'route' => 'backend.leavecategories.index',
                 'class' => 'nav-item',
@@ -250,6 +333,32 @@ class GenerateMenus
                     'order'         => 77,
                     'activematches' => ['admin/leavecategories*'],
                     'permission'    => ['view_leavecategories'],
+                ])
+                ->link->attr([
+                    'class' => 'nav-link',
+                ]);
+
+            $accessControl->add('<i class="nav-icon fa-solid fa-user-shield"></i> Manage Bank', [
+                'route' => 'backend.banks.index',
+                'class' => 'nav-item',
+            ])
+                ->data([
+                    'order'         => 77,
+                    'activematches' => ['admin/banks*'],
+                    'permission'    => ['view_banks'],
+                ])
+                ->link->attr([
+                    'class' => 'nav-link',
+                ]);
+
+            $accessControl->add('<i class="nav-icon fa-solid fa-user-shield"></i> Working Statuses', [
+                'route' => 'backend.workingstatuses.index',
+                'class' => 'nav-item',
+            ])
+                ->data([
+                    'order'         => 77,
+                    'activematches' => ['admin/workingstatuses*'],
+                    'permission'    => ['view_workingstatuses'],
                 ])
                 ->link->attr([
                     'class' => 'nav-link',

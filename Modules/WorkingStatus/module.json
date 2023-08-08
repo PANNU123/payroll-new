@@ -1,0 +1,13 @@
+{
+    "name": "WorkingStatus",
+    "alias": "workingstatus",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\WorkingStatus\\Providers\\WorkingStatusServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Title",
+    "alias": "title",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Title\\Providers\\TitleServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

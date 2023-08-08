@@ -16,9 +16,18 @@ return new class extends Migration
         Schema::create('managedesignations', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
+            $table->unsignedBigInteger('company_id')->nullable();
+            $table->foreign('company_id')->references('id')->on('groupcompanies')->onDelete('RESTRICT');
+
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('RESTRICT');
+
+            $table->integer('designation_code',false)->unsigned()->nullable();
+            $table->string('name',120);
+            $table->string('short_name',25);
+
             $table->string('slug')->nullable();
-            $table->text('description')->nullable();
+            $table->string('description',240)->nullable();
             $table->tinyInteger('status')->default(1);
 
             $table->integer('created_by')->unsigned()->nullable();

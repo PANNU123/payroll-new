@@ -1,0 +1,13 @@
+{
+    "name": "GroupCompany",
+    "alias": "groupcompany",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\GroupCompany\\Providers\\GroupCompanyServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

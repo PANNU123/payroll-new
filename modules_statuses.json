@@ -15,5 +15,12 @@
     "SetWorkingDay": true,
     "ManageHoliday": true,
     "ManageZkSetting": true,
-    "Religion": true
+    "Religion": true,
+    "GroupCompany": true,
+    "Company": true,
+    "Section": true,
+    "Location": true,
+    "Title": true,
+    "Bank": true,
+    "WorkingStatus": true
 }
