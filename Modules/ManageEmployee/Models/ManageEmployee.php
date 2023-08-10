@@ -22,4 +22,8 @@ class ManageEmployee extends BaseModel
     {
         return \Modules\ManageEmployee\database\factories\ManageEmployeeFactory::new();
     }
+
+    public function professionaldata(){
+        return $this->hasOne(ProfessionalEmployee::class,'emp_personals_id');
+    }
 }

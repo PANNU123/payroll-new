@@ -145,12 +145,14 @@ class ManageEmployeesController extends BackendBaseController
         $working_status = WorkingStatus::select('id','name')->get();
         $banks = Bank::select('id','name')->get();
 
+        $single_data = ManageEmployee::with('professionaldata')->where('user_id',$id)->first();
+
         logUserAccess($module_title.' '.$module_action.' | Id: '.$$module_name_singular->id);
 
         return view(
             "$module_path.$module_name.edit",
             compact('module_title', 'module_name', 'module_path', 'module_icon', 'module_action', 'module_name_singular',
-                "$module_name_singular",'companies','users','titles','religions','manage_designation','manage_department','section','working_status','banks')
+                "$module_name_singular",'companies','users','titles','religions','manage_designation','manage_department','section','working_status','banks','single_data')
         );
     }
 
@@ -211,7 +213,7 @@ class ManageEmployeesController extends BackendBaseController
                         'emp_personals_id'=>$pd->id,
                     ],
                     [
-                        'emp_personals_id'=>$request->emp_personals_id,
+                        'emp_personals_id'=>$pd->id,
                         'department_id'=>$request->department_id,
                         'section_id'=>$request->section_id,
                         'designation_id'=>$request->designation_id,
