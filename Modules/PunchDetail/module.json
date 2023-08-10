@@ -1,0 +1,13 @@
+{
+    "name": "PunchDetail",
+    "alias": "punchdetail",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PunchDetail\\Providers\\PunchDetailServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

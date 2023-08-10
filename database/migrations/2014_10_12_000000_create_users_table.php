@@ -32,7 +32,7 @@ return new class extends Migration
             $table->boolean('pass_never_exp')->default(0);
             //extra end
             $table->string('avatar')->nullable()->default('img/default-avatar.jpg');
-            $table->tinyInteger('status')->default(1)->unsigned();
+            $table->tinyInteger('status')->default(1);
             $table->rememberToken();
             $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();

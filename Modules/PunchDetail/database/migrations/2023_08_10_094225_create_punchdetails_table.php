@@ -13,14 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('manageemployees', function (Blueprint $table) {
+        Schema::create('punchdetails', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
-            $table->string('slug')->nullable();
-            $table->text('description')->nullable();
-            $table->tinyInteger('status')->default(1);
-            
+            $table->unsignedBigInteger('company_id')->nullable();
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('RESTRICT');
+
+            $table->integer('employee_id')->unsigned();
+            $table->integer('access_id');
+            $table->string('device_id',50);
+            $table->timestamp('attendance_datetime');
 
             $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
@@ -38,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('manageemployees');
+        Schema::dropIfExists('punchdetails');
     }
 };

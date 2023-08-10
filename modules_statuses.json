@@ -22,5 +22,6 @@
     "Location": true,
     "Title": true,
     "Bank": true,
-    "WorkingStatus": true
+    "WorkingStatus": true,
+    "PunchDetail": true
 }
