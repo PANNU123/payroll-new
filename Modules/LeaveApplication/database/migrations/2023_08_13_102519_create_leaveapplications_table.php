@@ -18,17 +18,20 @@ return new class extends Migration
 
             $table->unsignedBigInteger('company_id')->nullable();
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('RESTRICT');
-            $table->year('leave_year');
+
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('RESTRICT');
+
             $table->unsignedBigInteger('leave_id')->nullable();
             $table->foreign('leave_id')->references('id')->on('leavecategories')->onDelete('RESTRICT');
 
             $table->unsignedBigInteger('recommend_id')->nullable();
             $table->foreign('recommend_id')->references('id')->on('users')->onDelete('RESTRICT');
+
             $table->unsignedBigInteger('approve_id')->nullable();
             $table->foreign('approve_id')->references('id')->on('users')->onDelete('RESTRICT');
 
+            $table->date('leave_year');
             $table->date('from_date');
             $table->date('to_date');
             $table->smallInteger('nods')->default(0);
