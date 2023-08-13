@@ -125,7 +125,7 @@ class GenerateMenus
                 ]);
 
             // Manage Employee
-            $accessControl = $menu->add('<i class="nav-icon fa-solid fa-user-gear"></i> Manage People', [
+            $accessControl = $menu->add('<i class="nav-icon fa-solid fa-user-gear"></i> Manage Employee', [
                 'class' => 'nav-group',
             ])
                 ->data([
@@ -164,6 +164,62 @@ class GenerateMenus
                     'order'         => 77,
                     'activematches' => ['admin/managereferences*'],
                     'permission'    => ['view_managereferences'],
+                ])
+                ->link->attr([
+                    'class' => 'nav-link',
+                ]);
+//            leave management
+            $accessControl = $menu->add('<i class="nav-icon fa-solid fa-user-gear"></i> Leave Management', [
+                'class' => 'nav-group',
+            ])
+                ->data([
+                    'order' => 2,
+                    'activematches' => [
+                        'admin/users*',
+                        'admin/roles*',
+                    ],
+                    'permission' => ['view_users', 'view_roles'],
+                ]);
+            $accessControl->link->attr([
+                'class' => 'nav-link nav-group-toggle',
+                'href' => '#',
+            ]);
+
+            // Submenu: Users
+            $accessControl->add('<i class="nav-icon fa-solid fa-user-group"></i> Leave Category', [
+                'route' => 'backend.leavecategories.index',
+                'class' => 'nav-item',
+            ])
+                ->data([
+                    'order'         => 77,
+                    'activematches' => ['admin/leavecategories*'],
+                    'permission'    => ['view_leavecategories'],
+                ])
+                ->link->attr([
+                    'class' => 'nav-link',
+                ]);
+
+            // Submenu: Roles
+            $accessControl->add('<i class="nav-icon fa-solid fa-user-shield"></i> Leave Registration', [
+                'route' => 'backend.leaveregisters.index',
+                'class' => 'nav-item',
+            ])
+                ->data([
+                    'order'         => 77,
+                    'activematches' => ['admin/leaveregisters*'],
+                    'permission'    => ['view_leaveregisters'],
+                ])
+                ->link->attr([
+                    'class' => 'nav-link',
+                ]);
+            $accessControl->add('<i class="nav-icon fa-solid fa-user-shield"></i> Leave Applications', [
+                'route' => 'backend.leaveapplications.index',
+                'class' => 'nav-item',
+            ])
+                ->data([
+                    'order'         => 77,
+                    'activematches' => ['admin/leaveapplications*'],
+                    'permission'    => ['view_leaveapplications'],
                 ])
                 ->link->attr([
                     'class' => 'nav-link',
@@ -325,14 +381,14 @@ class GenerateMenus
                     'class' => 'nav-link',
                 ]);
 
-            $accessControl->add('<i class="nav-icon fa-solid fa-user-shield"></i> Leave Category', [
-                'route' => 'backend.leavecategories.index',
+            $accessControl->add('<i class="nav-icon fa-solid fa-user-shield"></i> Bangladesh', [
+                'route' => 'backend.bangladeshes.index',
                 'class' => 'nav-item',
             ])
                 ->data([
                     'order'         => 77,
-                    'activematches' => ['admin/leavecategories*'],
-                    'permission'    => ['view_leavecategories'],
+                    'activematches' => ['admin/bangladeshes*'],
+                    'permission'    => ['view_bangladeshes'],
                 ])
                 ->link->attr([
                     'class' => 'nav-link',

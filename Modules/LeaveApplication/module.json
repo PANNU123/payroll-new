@@ -1,0 +1,13 @@
+{
+    "name": "LeaveApplication",
+    "alias": "leaveapplication",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\LeaveApplication\\Providers\\LeaveApplicationServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

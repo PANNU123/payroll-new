@@ -1,0 +1,13 @@
+{
+    "name": "Bangladesh",
+    "alias": "bangladesh",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Bangladesh\\Providers\\BangladeshServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

@@ -16,10 +16,22 @@ return new class extends Migration
         Schema::create('leavecategories', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
-            $table->string('slug')->nullable();
-            $table->text('description')->nullable();
-            $table->tinyInteger('status')->default(1);
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('RESTRICT');
+            $table->unsignedBigInteger('company_id')->nullable();
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('RESTRICT');
+
+            $table->string('name',100);
+            $table->char('short_code',5);
+            $table->char('leave_type',1)->default('Y');
+            $table->char('leave_limit',1)->default('Y');
+            $table->integer('yearly_limit')->unsigned()->default(0);
+            $table->char('is_carry_forward',1)->default('N');
+            $table->char('show_roster',1)->default('Y');
+            $table->mediumText('particulars')->nullable();
+            $table->integer('status')->default(1);
+
+
 
             $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();

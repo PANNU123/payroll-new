@@ -23,5 +23,9 @@
     "Title": true,
     "Bank": true,
     "WorkingStatus": true,
-    "PunchDetail": true
+    "PunchDetail": true,
+    "MODULENAME": true,
+    "Bangladesh": true,
+    "LeaveRegister": true,
+    "LeaveApplication": true
 }
