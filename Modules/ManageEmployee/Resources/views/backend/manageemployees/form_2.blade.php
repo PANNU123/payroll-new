@@ -1,5 +1,8 @@
 <div class="row">
-    <input type="hidden" name="user_id" value="{{$$module_name_singular->id}}">
+    @if(isset($$module_name_singular))
+        <input type="hidden" name="user_id" value="{{$$module_name_singular->id}}">
+    @endif
+
     <div class="col-12 col-sm-3 mb-3">
         <div class="form-group">
             <?php
@@ -97,22 +100,26 @@
             $default_value = $single_data->professionaldata->pf_no ?? "";
             ?>
             {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->value($default_value)->attributes(["$required"]) }}
+            {{ html()->number($field_name)->placeholder($field_placeholder)->class('form-control')->value($default_value)->attributes(["$required"]) }}
         </div>
     </div>
-    <div class="col-12 col-sm-3 mb-3">
-        <div class="form-group">
-            <?php
-            $field_name = 'report_to';
-            $field_lable = label_case($field_name);
-            $field_placeholder = $field_lable;
-            $required = "";
-            $default_value = $single_data->professionaldata->report_to ?? "";
-            ?>
-            {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->value($default_value)->attributes(["$required"]) }}
+        <div class="col-12 col-sm-3 mb-3">
+            <div class="form-group">
+                <?php
+                $field_name = 'report_to';
+                $field_lable = label_case($field_name);
+                $field_placeholder = "-- Select an option --";
+                $required = "";
+                $selected_option = $single_data->professionaldata->section_id ?? "";
+                $select_options = [];
+                foreach ($users as $key=>$item) {
+                    $select_options[$item->id] = $item->name;
+                }
+                ?>
+                {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
+                {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->class('form-control select2')->attributes(["$required"])->value($selected_option) }}
+            </div>
         </div>
-    </div>
     <div class="col-12 col-sm-3 mb-3">
         <div class="form-group">
             <?php
@@ -123,40 +130,9 @@
             $default_value = $single_data->professionaldata->joining_date ?? "";
             ?>
             {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->value($default_value)->attributes(["$required"]) }}
+            {{ html()->date($field_name)->placeholder($field_placeholder)->class('form-control')->value($default_value)->attributes(["$required"]) }}
         </div>
     </div>
-    <div class="col-12 col-sm-4 mb-3">
-        <div class="form-group">
-            <?php
-            $field_name = 'card_no';
-            $field_lable = label_case($field_name);
-            $field_placeholder = "-- Select an option --";
-            $required = "";
-            $selected_option = $single_data->professionaldata->card_no ?? "";
-            $select_options = [
-                '1'=>'Yes',
-                '0'=>'No',
-            ];
-            ?>
-            {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
-            {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->class('form-control select2')->attributes(["$required"])->value($selected_option) }}
-        </div>
-    </div>
-    <div class="col-12 col-sm-4 mb-3">
-        <div class="form-group">
-            <?php
-            $field_name = 'card_printed';
-            $field_lable = label_case($field_name);
-            $field_placeholder = $field_lable;
-            $required = "";
-            $default_value = $single_data->professionaldata->card_printed ?? "";
-            ?>
-            {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
-           {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->value($default_value)->attributes(["$required"]) }}
-        </div>
-    </div>
-
     <div class="col-12 col-sm-4 mb-3">
         <div class="form-group">
             <?php
@@ -229,7 +205,7 @@
             $default_value = $single_data->professionaldata->pay_schale ?? "";
             ?>
             {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->value($default_value)->attributes(["$required"]) }}
+            {{ html()->number($field_name)->placeholder($field_placeholder)->class('form-control')->value($default_value)->attributes(["$required"]) }}
         </div>
     </div>
     <div class="col-12 col-sm-4 mb-3">
@@ -305,7 +281,7 @@
             $default_value = $single_data->professionaldata->status_change_date ?? "";
             ?>
             {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->value($default_value)->attributes(["$required"]) }}
+            {{ html()->date($field_name)->placeholder($field_placeholder)->class('form-control')->value($default_value)->attributes(["$required"]) }}
         </div>
     </div>
 </div>

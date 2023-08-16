@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+
+            $table->unsignedBigInteger('company_id')->nullable();
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('RESTRICT');
+
+            $table->string('name')->nullable();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('username')->nullable();

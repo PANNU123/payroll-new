@@ -3,8 +3,10 @@
 namespace Modules\LeaveApplication\Models;
 
 use App\Models\BaseModel;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\LeaveCategory\Models\LeaveCategory;
 
 class LeaveApplication extends BaseModel
 {
@@ -21,5 +23,14 @@ class LeaveApplication extends BaseModel
     protected static function newFactory()
     {
         return \Modules\LeaveApplication\database\factories\LeaveApplicationFactory::new();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
+    public function leavecategory()
+    {
+        return $this->belongsTo(LeaveCategory::class,'leave_id');
     }
 }

@@ -54,6 +54,10 @@
                             <th>
                                 @lang("leaveapplication::text.name")
                             </th>
+                            <th>Leave Category</th>
+                            <th>Total Days</th>
+                            <th>Reason</th>
+
                             <th>
                                 @lang("leaveapplication::text.updated_at")
                             </th>
@@ -108,6 +112,18 @@
             {
                 data: 'name',
                 name: 'name'
+            },
+            {
+                data: 'leave_category',
+                name: 'leave_category'
+            },
+            {
+                data: 'total_days',
+                name: 'total_days'
+            },
+            {
+                data: 'reason',
+                name: 'reason'
             },
             {
                 data: 'updated_at',

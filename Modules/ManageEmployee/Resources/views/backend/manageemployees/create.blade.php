@@ -16,12 +16,20 @@
     <div class="card">
         <div class="card-body">
             <x-backend.section-header :module_name="$module_name" :module_title="$module_title" :module_icon="$module_icon" :module_action="$module_action" />
+            <p style="color: red">password automatically generated ( 12345678 )</p>
             <div class="row mt-4">
                 <div class="col">
                     {{ html()->form('POST', route("backend.$module_name.store"))->class('form')->acceptsFiles()->open() }}
-
-                    @include ("$module_path.$module_name.form")
-
+                    <h3>Credential Information</h3>
+                    @include ("$module_path.$module_name.form_3")
+                    <br /><br />
+                    <h3>Personal Information</h3>
+                    <br>
+                    @include ("$module_path.$module_name.form",['companies'=>$companies,'users'=>$users,'titles'=>$titles,'religions'=>$religions])
+                    <br /><br />
+                    <h3>Professional Information</h3>
+                    <br>
+                    @include ("$module_path.$module_name.form_2",['manage_designation'=>$manage_designation,'manage_department'=>$manage_department,'section'=>$section,'working_status'=>$working_status,'banks'=>$banks,])
                     <div class="row">
                         <div class="col-6">
                             <x-backend.buttons.create>Create</x-backend.buttons.create>

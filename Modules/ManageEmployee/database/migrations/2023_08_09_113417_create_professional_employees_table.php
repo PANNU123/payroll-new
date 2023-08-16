@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('professionalemployees', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('RESTRICT');
+
             $table->unsignedBigInteger('emp_personals_id')->nullable();
             $table->foreign('emp_personals_id')->references('id')->on('manageemployees')->onDelete('RESTRICT');
 
@@ -38,12 +41,12 @@ return new class extends Migration
             $table->integer('report_to')->nullable();
             $table->date('joining_date')->nullable();
             $table->string('card_no',30)->nullable();
-            $table->boolean('card_printed')->default(0);
-            $table->boolean('overtime')->default(0)->comment('Overtime Eligibility');
+//            $table->tinyInteger('card_printed')->default(0);
+            $table->integer('overtime')->default(0)->comment('Overtime Eligibility');
             $table->string('overtime_note',999)->default(0)->comment('Overtime Instructions')->nullable();
-            $table->boolean('transport')->default(0)->comment('Transport Eligibility');
+            $table->integer('transport')->default(0)->comment('Transport Eligibility');
             $table->string('transport_note',999)->comment('Transport Instructions')->nullable();
-            $table->integer('pay_schale')->unsigned()->default(0);
+            $table->tinyInteger('pay_schale')->default(0);
             $table->string('pay_grade',50)->nullable();
 
             $table->char('confirm_probation',1)->default('P');

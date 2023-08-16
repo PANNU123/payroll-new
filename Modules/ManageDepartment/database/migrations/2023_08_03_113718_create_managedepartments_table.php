@@ -26,13 +26,15 @@ return new class extends Migration
             $table->char('short_name',25);
             $table->string('slug')->nullable();
 
+            $table->integer('department_code')->nullable()->unsigned();
+
+
             $table->date('started_from')->default(\Carbon\Carbon::now());
             $table->integer('report_to')->unsigned()->nullable();
             $table->integer('approval_authority')->unsigned()->nullable();
             $table->integer('headed_by')->unsigned()->nullable();
             $table->integer('second_man')->unsigned()->nullable();
             $table->string('email',190)->nullable()->unique();
-            $table->string('description',240)->nullable();
             $table->tinyInteger('status')->default(1);
             $table->integer('emp_count')->unsigned()->default(0);
             $table->integer('approved_manpower')->unsigned()->default(0);

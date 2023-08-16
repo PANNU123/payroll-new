@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('branch_code')->nullable();
             $table->string('branch_name',150);
             $table->string('slug')->nullable();
-            $table->text('description')->nullable();
+
             $table->tinyInteger('status')->default(1);
 
             $table->integer('created_by')->unsigned()->nullable();

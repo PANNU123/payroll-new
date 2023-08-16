@@ -29,10 +29,10 @@ class UserRegisteredProfileCreate implements ShouldQueue
 
         $userprofile = new Userprofile();
         $userprofile->user_id = $user->id;
-        $userprofile->name = $user->name;
+        $userprofile->name = $user->name ? $user->name : "Annonymous";
         $userprofile->first_name = $user->first_name;
         $userprofile->last_name = $user->last_name;
-        $userprofile->username = $user->username;
+        $userprofile->username = $user->username ? $user->username : "Anonymous";
         $userprofile->email = $user->email;
         $userprofile->mobile = $user->mobile;
         $userprofile->gender = $user->gender;

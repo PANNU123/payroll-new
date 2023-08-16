@@ -23,8 +23,6 @@ return new class extends Migration
 
             $table->string('name');
             $table->char('short_name',2)->default('A');
-            $table->string('slug')->nullable();
-            $table->text('description')->nullable();
             $table->tinyInteger('status')->default(1);
 
             $table->integer('created_by')->unsigned()->nullable();

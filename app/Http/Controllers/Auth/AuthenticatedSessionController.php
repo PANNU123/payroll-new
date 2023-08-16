@@ -42,11 +42,11 @@ class AuthenticatedSessionController extends Controller
             $request->session()->regenerate();
 
             event(new UserLoginSuccess($request, auth()->user()));
-            User::where('id',Auth::id())->update([
-                'last_login' => \Carbon\Carbon::now(),
-                'visitor' => request()->ip(),
-                'device' => shell_exec('getmac'),
-            ]);
+//            User::where('id',Auth::id())->update([
+//                'last_login' => \Carbon\Carbon::now(),
+//                'visitor' => request()->ip(),
+//                'device' => shell_exec('getmac'),
+//            ]);
 
             return redirect()->intended(RouteServiceProvider::HOME);
         }

@@ -2,11 +2,13 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Modules\Company\Models\Company;
 use Modules\GroupCompany\Models\GroupCompany;
 use Modules\LeaveCategory\Models\LeaveCategory;
+use Modules\LeaveRegister\Models\LeaveRegister;
 use Modules\ManageDepartment\Models\ManageDepartment;
 use Modules\ManageDesignation\Models\ManageDesignation;
 use Modules\Religion\Models\Religion;
@@ -97,6 +99,16 @@ class HrmTableSeeder extends Seeder
             'user_id'=>1,
             'company_id'=>1,
             'name'=>'ABC',
+        ]);
+
+        LeaveRegister::create([
+            'company_id'=>1,
+            'leave_year'=>Carbon::now(),
+            'user_id'=>1,
+            'leave_id'=>1,
+            'leave_eligible'=>10,
+            'leave_enjoyed'=>5,
+            'leave_balance'=>5,
         ]);
         //end title
 

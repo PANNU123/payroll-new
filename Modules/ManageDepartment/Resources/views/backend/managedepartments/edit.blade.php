@@ -32,7 +32,7 @@
                 <div class="col">
                     {{ html()->modelForm($$module_name_singular, 'PATCH', route("backend.$module_name.update", $$module_name_singular))->acceptsFiles()->class('form')->open() }}
 
-                    @include ("$module_path.$module_name.form",['users'=>$users , 'companies'=>$companies,'departments'=>$departments])
+                    @include ("$module_path.$module_name.form",['users'=>$users , 'companies'=>$companies])
 
                     <div class="row">
                         <div class="col-4">

@@ -28,10 +28,10 @@ class UserUpdatedProfileUpdate implements ShouldQueue
         $user = $event->user;
 
         $userprofile = Userprofile::where('user_id', '=', $user->id)->first();
-        $userprofile->name = $user->name;
+       $userprofile->name = $user->name ? $user->name : "Annonymous";
         $userprofile->first_name = $user->first_name;
         $userprofile->last_name = $user->last_name;
-        $userprofile->username = $user->username;
+       $userprofile->username = $user->username ? $user->username : "Anonymous";
         $userprofile->email = $user->email;
         $userprofile->mobile = $user->mobile;
         $userprofile->gender = $user->gender;

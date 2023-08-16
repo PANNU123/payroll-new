@@ -1,5 +1,7 @@
 <div class="row">
-    <input type="hidden" name="user_id" value="{{$$module_name_singular->id}}">
+    @if(isset($$module_name_singular))
+        <input type="hidden" name="user_id" value="{{$$module_name_singular->id}}">
+    @endif
     <div class="col-12 col-sm-3 mb-3">
         <div class="form-group">
             <?php

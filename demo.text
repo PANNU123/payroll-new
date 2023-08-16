@@ -1,0 +1,4 @@
+        $data_array = $request->all();
+        $data_array['user_id'] = auth()->user()->id;
+        $user = User::where('id',auth()->user()->id)->first();
+        $data_array['company_id'] = $user->company_id;

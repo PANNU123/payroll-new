@@ -1,18 +1,18 @@
 <div class="row">
-    <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
-    <div class="col-12 col-sm-3 mb-3">
-        <div class="form-group">
-            <?php
-            $field_name = 'Authorizer';
-            $field_label = label_case($field_name);
-            $field_placeholder = $field_label;
-            $required = "required";
-            $field_value = \Illuminate\Support\Facades\Auth::user()->name; // Set the value you want here
-            ?>
-            {{ html()->label($field_label, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required" => $required, "value" => $field_value,]) }}
-        </div>
-    </div>
+{{--    <input type="hidden" name="user_id" value="{{auth()->user()->id}}">--}}
+{{--    <div class="col-12 col-sm-3 mb-3">--}}
+{{--        <div class="form-group">--}}
+{{--            <?php--}}
+{{--            $field_name = 'Authorizer';--}}
+{{--            $field_label = label_case($field_name);--}}
+{{--            $field_placeholder = $field_label;--}}
+{{--            $required = "required";--}}
+{{--            $field_value = \Illuminate\Support\Facades\Auth::user()->name; // Set the value you want here--}}
+{{--            ?>--}}
+{{--            {{ html()->label($field_label, $field_name)->class('form-label') }} {!! fielf_required($required) !!}--}}
+{{--            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required" => $required, "value" => $field_value,]) }}--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <div class="col-12 col-sm-3 mb-3">
         <div class="form-group">
             <?php
@@ -25,18 +25,18 @@
             {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
         </div>
     </div>
-    <div class="col-12 col-sm-3 mb-3">
-        <div class="form-group">
-            <?php
-            $field_name = 'slug';
-            $field_lable = label_case($field_name);
-            $field_placeholder = $field_lable;
-            $required = "";
-            ?>
-            {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
-        </div>
-    </div>
+{{--    <div class="col-12 col-sm-3 mb-3">--}}
+{{--        <div class="form-group">--}}
+{{--            <?php--}}
+{{--            $field_name = 'slug';--}}
+{{--            $field_lable = label_case($field_name);--}}
+{{--            $field_placeholder = $field_lable;--}}
+{{--            $required = "";--}}
+{{--            ?>--}}
+{{--            {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}--}}
+{{--            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <div class="col-12 col-sm-3 mb-3">
         <div class="form-group">
             <?php
@@ -56,19 +56,19 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-12 mb-3">
-        <div class="form-group">
-            <?php
-            $field_name = 'description';
-            $field_lable = label_case($field_name);
-            $field_placeholder = $field_lable;
-            $required = "";
-            ?>
-            {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
-            {{ html()->textarea($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
-        </div>
-    </div>
-</div>
+{{--<div class="row">--}}
+{{--    <div class="col-12 mb-3">--}}
+{{--        <div class="form-group">--}}
+{{--            <?php--}}
+{{--            $field_name = 'description';--}}
+{{--            $field_lable = label_case($field_name);--}}
+{{--            $field_placeholder = $field_lable;--}}
+{{--            $required = "";--}}
+{{--            ?>--}}
+{{--            {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}--}}
+{{--            {{ html()->textarea($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
 
 <x-library.select2 />

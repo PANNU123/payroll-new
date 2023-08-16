@@ -200,18 +200,18 @@ class GenerateMenus
                 ]);
 
             // Submenu: Roles
-            $accessControl->add('<i class="nav-icon fa-solid fa-user-shield"></i> Leave Registration', [
-                'route' => 'backend.leaveregisters.index',
-                'class' => 'nav-item',
-            ])
-                ->data([
-                    'order'         => 77,
-                    'activematches' => ['admin/leaveregisters*'],
-                    'permission'    => ['view_leaveregisters'],
-                ])
-                ->link->attr([
-                    'class' => 'nav-link',
-                ]);
+//            $accessControl->add('<i class="nav-icon fa-solid fa-user-shield"></i> Leave Register', [
+//                'route' => 'backend.leaveregisters.index',
+//                'class' => 'nav-item',
+//            ])
+//                ->data([
+//                    'order'         => 77,
+//                    'activematches' => ['admin/leaveregisters*'],
+//                    'permission'    => ['view_leaveregisters'],
+//                ])
+//                ->link->attr([
+//                    'class' => 'nav-link',
+//                ]);
             $accessControl->add('<i class="nav-icon fa-solid fa-user-shield"></i> Leave Applications', [
                 'route' => 'backend.leaveapplications.index',
                 'class' => 'nav-item',
