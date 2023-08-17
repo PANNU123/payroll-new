@@ -70,6 +70,11 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend', 'prefix' => 'admin'
     Route::get('/', 'BackendController@index')->name('home');
     Route::get('dashboard', 'BackendController@index')->name('dashboard');
 
+
+
+    Route::get('get-thana', 'CommonController@getThana')->name('get.thana');
+    Route::get('get-post-code', 'CommonController@getPostCode')->name('get.post.code');
+
     /*
      *
      *  Settings Routes

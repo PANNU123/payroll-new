@@ -111,6 +111,5 @@ class HrmTableSeeder extends Seeder
             'leave_balance'=>5,
         ]);
         //end title
-
     }
 }

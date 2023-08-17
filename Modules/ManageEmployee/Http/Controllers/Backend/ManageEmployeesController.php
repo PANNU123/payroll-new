@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Modules\Bangladesh\Models\Bangladesh;
 use Modules\Bank\Models\Bank;
 use Modules\Company\Models\Company;
 use Modules\GroupCompany\Models\GroupCompany;
@@ -136,6 +137,8 @@ class ManageEmployeesController extends BackendBaseController
         $users = User::whereNotIn('id',[auth()->user()->id])->select('id','name')->get();
         $titles = Title::select('id','name')->get();
         $religions = Religion::select('id','name')->get();
+        $bangladesh = Bangladesh::select('district')->groupBy('district')
+            ->get();
 
         $manage_department = ManageDepartment::select('id','name')->get();
         $section = Section::select('id','name')->get();
@@ -147,7 +150,7 @@ class ManageEmployeesController extends BackendBaseController
 
         return view(
             "$module_path.$module_name.create",
-            compact('module_title', 'module_name', 'module_path', 'module_icon', 'module_name_singular', 'module_action','companies','users','titles','religions','manage_designation','manage_department','section','working_status','banks')
+            compact('module_title', 'module_name', 'module_path', 'module_icon', 'module_name_singular', 'module_action','companies','users','titles','religions','manage_designation','manage_department','section','working_status','banks','bangladesh')
         );
     }
 
@@ -322,7 +325,7 @@ class ManageEmployeesController extends BackendBaseController
         return view(
             "$module_path.$module_name.edit",
             compact('module_title', 'module_name', 'module_path', 'module_icon', 'module_action', 'module_name_singular',
-                "$module_name_singular",'companies','users','titles','religions','manage_designation','manage_department','section','working_status','banks','single_data')
+                "$module_name_singular",'companies','users','titles','religions','manage_designation','manage_department','section','working_status','banks','single_data','bangladesh')
         );
     }
 
