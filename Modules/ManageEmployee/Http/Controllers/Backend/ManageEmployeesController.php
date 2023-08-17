@@ -311,6 +311,8 @@ class ManageEmployeesController extends BackendBaseController
         $users = User::select('id','name')->get();
         $titles = Title::select('id','name')->get();
         $religions = Religion::select('id','name')->get();
+        $bangladesh = Bangladesh::select('district')->groupBy('district')
+            ->get();
 
         $manage_department = ManageDepartment::select('id','name')->get();
         $section = Section::select('id','name')->get();
