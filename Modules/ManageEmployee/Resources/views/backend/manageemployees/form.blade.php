@@ -137,7 +137,7 @@
             </div>
         </div>
 
-
+{{--@dd($single_data->pr_police_station)--}}
 
         <div class="col-12 col-sm-3 mb-3">
             <div class="form-group">
@@ -147,9 +147,10 @@
                 $field_placeholder = "-- Select an option --";
                 $required = "";
                 $select_options = [];
+                $selected_option = $single_data->pr_police_station ?? "";
                 ?>
                 {{ html()->label('Present Police Station', $field_name)->class('form-label') }} {!! fielf_required($required) !!}
-                {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->class('form-control select2')->attributes(["$required"]) }}
+                {{ html()->select($field_name, $selected_option)->placeholder($field_placeholder)->class('form-control select2')->attributes(["$required"])->value($selected_option) }}
             </div>
         </div>
 
@@ -207,9 +208,10 @@
                 $field_placeholder = "-- Select an option --";
                 $required = "";
                 $select_options = [];
+                $default_value = $single_data->pm_police_station ?? "";
                 ?>
                 {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
-                {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->class('form-control select2')->attributes(["$required"]) }}
+                {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->value($default_value)->class('form-control select2')->attributes(["$required"]) }}
             </div>
         </div>
 
@@ -221,7 +223,7 @@
                 $field_placeholder = $field_lable;
                 $required = "required";
                 $readonly="readonly";
-                $default_value = $single_data->pr_post_code ?? "";
+                $default_value = $single_data->pm_post_code ?? "";
                 ?>
                 {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
                 {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->value($default_value)->attributes(["$required","$readonly"]) }}
@@ -250,7 +252,7 @@
                 $field_placeholder = "-- Select an option --";
                 $required = "";
                 $select_options = [];
-                $selected_option = $single_data->pm_district ?? "";
+                $selected_option = $single_data->m_district ?? "";
                 foreach ($bangladesh as $key=>$item) {
                     $select_options[$item->district] = $item->district;
                 }
@@ -281,7 +283,7 @@
                 $field_placeholder = $field_lable;
                 $required = "required";
                 $readonly="readonly";
-                $default_value = $single_data->pr_post_code ?? "";
+                $default_value = $single_data->m_post_code ?? "";
                 ?>
                 {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
                 {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->value($default_value)->attributes(["$required","$readonly"]) }}
@@ -571,5 +573,72 @@
                 })
             })
         })
+    </script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            let pr_district = $("#pr_district").val();
+            if (pr_district !== '') {
+                $.ajax({
+                    url: "{{route('backend.get.thana')}}",
+                    method: 'get',
+                    data: {
+                        district: pr_district
+                    },
+                    success: function (data) {
+                        let html = '';  // Initialize an empty string
+                        $.each(data, function (key, value) {
+                            if (value.thana + '-' + value.post_office !== "{{$single_data->pr_police_station}}") {
+                                html += '<option value="' + value.thana + '-' + value.post_office + '" class="py-1 inline-block font-Inter font-normal text-sm text-slate-600">' + value.thana + '-' + value.post_office + '</option>';
+                            }
+                        });
+                        html = '<option value="{{$single_data->pr_police_station}}" class="py-1 inline-block font-Inter font-normal text-sm text-slate-600" selected>{{$single_data->pr_police_station}}</option>' + html;
+                        $("#pr_police_station").html(html);
+                    }
+                });
+            }
+            // ********************
+            let pm_district = $("#pm_district").val();
+            if (pm_district !== '') {
+                $.ajax({
+                    url: "{{route('backend.get.thana')}}",
+                    method: 'get',
+                    data: {
+                        district: pm_district
+                    },
+                    success: function (data) {
+                        let html = '';  // Initialize an empty string
+                        $.each(data, function (key, value) {
+                            if (value.thana + '-' + value.post_office !== "{{$single_data->pm_police_station}}") {
+                                html += '<option value="' + value.thana + '-' + value.post_office + '" class="py-1 inline-block font-Inter font-normal text-sm text-slate-600">' + value.thana + '-' + value.post_office + '</option>';
+                            }
+                        });
+                        html = '<option value="{{$single_data->pm_police_station}}" class="py-1 inline-block font-Inter font-normal text-sm text-slate-600" selected>{{$single_data->pm_police_station}}</option>' + html;
+                        $("#pm_police_station").html(html);
+                    }
+                });
+            }
+
+
+            let m_district = $("#m_district").val();
+            if (m_district !== '') {
+                $.ajax({
+                    url: "{{route('backend.get.thana')}}",
+                    method: 'get',
+                    data: {
+                        district: m_district
+                    },
+                    success: function (data) {
+                        let html = '';  // Initialize an empty string
+                        $.each(data, function (key, value) {
+                            if (value.thana + '-' + value.post_office !== "{{$single_data->m_police_station}}") {
+                                html += '<option value="' + value.thana + '-' + value.post_office + '" class="py-1 inline-block font-Inter font-normal text-sm text-slate-600">' + value.thana + '-' + value.post_office + '</option>';
+                            }
+                        });
+                        html = '<option value="{{$single_data->m_police_station}}" class="py-1 inline-block font-Inter font-normal text-sm text-slate-600" selected>{{$single_data->m_police_station}}</option>' + html;
+                        $("#m_police_station").html(html);
+                    }
+                });
+            }
+        });
     </script>
 @endpush
