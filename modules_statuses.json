@@ -27,5 +27,6 @@
     "MODULENAME": true,
     "Bangladesh": true,
     "LeaveRegister": true,
-    "LeaveApplication": true
+    "LeaveApplication": true,
+    "PublicHoliday": true
 }

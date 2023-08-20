@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Modules\Company\Models\Company;
 use Modules\GroupCompany\Models\GroupCompany;
 use Modules\LeaveCategory\Models\LeaveCategory;
@@ -110,6 +111,10 @@ class HrmTableSeeder extends Seeder
             'leave_enjoyed'=>5,
             'leave_balance'=>5,
         ]);
+
+        $path = public_path('bangladesh.sql');
+        $sql = file_get_contents($path);
+        DB::unprepared($sql);
         //end title
     }
 }

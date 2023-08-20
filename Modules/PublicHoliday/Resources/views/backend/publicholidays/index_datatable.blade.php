@@ -51,14 +51,14 @@
                             <th>
                                 #
                             </th>
+                            <th>Title</th>
+                            <th>From Date</th>
+                            <th>To Date</th>
                             <th>
-                                @lang("bank::text.name")
-                            </th>
-                            <th>
-                                @lang("bank::text.updated_at")
+                                @lang("publicholiday::text.updated_at")
                             </th>
                             <th class="text-end">
-                                @lang("bank::text.action")
+                                @lang("publicholiday::text.action")
                             </th>
                         </tr>
                     </thead>
@@ -106,8 +106,16 @@
                 name: 'id'
             },
             {
-                data: 'name',
-                name: 'name'
+                data: 'title',
+                name: 'title'
+            },
+            {
+                data: 'from_date',
+                name: 'from_date'
+            },
+            {
+                data: 'to_date',
+                name: 'to_date'
             },
             {
                 data: 'updated_at',

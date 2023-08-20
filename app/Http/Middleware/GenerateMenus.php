@@ -434,13 +434,13 @@ class GenerateMenus
                 ]);
 
             $accessControl->add('<i class="nav-icon fa-solid fa-user-shield"></i> Manage Holiday', [
-                'route' => 'backend.manageholidays.index',
+                'route' => 'backend.publicholidays.index',
                 'class' => 'nav-item',
             ])
                 ->data([
                     'order'         => 77,
-                    'activematches' => ['admin/manageholidays*'],
-                    'permission'    => ['view_manageholidays'],
+                    'activematches' => ['admin/publicholidays*'],
+                    'permission'    => ['view_publicholidays'],
                 ])
                 ->link->attr([
                     'class' => 'nav-link',

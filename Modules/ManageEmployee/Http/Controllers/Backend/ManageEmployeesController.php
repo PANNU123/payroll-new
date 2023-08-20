@@ -79,6 +79,10 @@ class ManageEmployeesController extends BackendBaseController
         return response()->json($$module_name);
     }
 
+//    public function index(){
+//        return $module_name = User::with('personaldata','professionaldata','professionaldata.designation','professionaldata.department')->get();
+//    }
+
     public function index_data()
     {
         $module_title = $this->module_title;
@@ -94,30 +98,50 @@ class ManageEmployeesController extends BackendBaseController
         $page_heading = label_case($module_title);
         $title = $page_heading.' '.label_case($module_action);
 
-        $$module_name = $module_user_model::select('id', 'name', 'updated_at');
+        $$module_name = User::with('personaldata','professionaldata','professionaldata.designation','professionaldata.department','professionaldata.working')->latest();
 
         $data = $$module_name;
 
         return Datatables::of($$module_name)
             ->addColumn('action', function ($data) {
-                    $btn = '<a href="'.route('backend.'.$this->module_name.'.edit',$data->id).'" class="btn btn-success btn-sm"><i class="fas fa-wrench"></i></a>';
+                    $btn = '<a  href="'.route('backend.'.$this->module_name.'.edit',$data->id).'" class="btn btn-primary btn-sm"><i class="fas fa-desktop"></i></a>';
+                    $btn =$btn.'<a style="margin-left:3px" href="'.route('backend.'.$this->module_name.'.edit',$data->id).'" class="btn btn-info btn-sm"><i class="fas fa-wrench"></i></a>';
+                    $btn = $btn.'<a style="margin-left:3px" href="javascript:void(0)" class="btn btn-success btn-sm createNewEduBtn"><i class="fa-solid fa-book-open-reader"></i></a>';
+                    $btn = $btn.'<a style="margin-left:3px" href="javascript:void(0)" class="btn btn-warning btn-sm createNewPostingBtn"><i class="fa-solid fa-plane-departure"></i></a>';
 //                    $btn = '<a href="" class="btn btn-success btn-sm"><i class="fas fa-wrench""></i></a>';
                 return $btn;
             })
-            ->editColumn('name', '<strong>{{$name}}</strong>')
-            ->editColumn('updated_at', function ($data) {
-                $module_name = $this->module_name;
+            ->editColumn('avatar', '<strong>Avatar</strong>')
+            ->editColumn('machine_user_id', function ($data) {
+                $joining_date = $data->professionaldata->joining_date;
+                $carbonDate = Carbon::parse($joining_date);
+                $formattedDate = $carbonDate->format("my");
 
-                $diff = Carbon::now()->diffInHours($data->updated_at);
+                return 'LL-' . $formattedDate . '-' . $data->machine_user_id . '<br>' .'<strong style="color: #aa00ff">' . $data->professionaldata->working->name . '</strong>';
 
-                if ($diff < 25) {
-                    return $data->updated_at->diffForHumans();
-                } else {
-                    return $data->updated_at->isoFormat('llll');
-                }
             })
-            ->rawColumns(['name', 'action'])
-            ->orderColumns(['id'], '-:column $1')
+//            ->editColumn('machine_user_id', '<strong>{{$machine_user_id}}</strong>'. '<br>' .'<strong>{{$machine_user_id}}</strong>')
+            ->editColumn('name', '<strong>{{$name}}</strong>')
+            ->editColumn('mobile', '<strong>{{$mobile}}</strong>')
+            ->editColumn('desi_depart', function ($data) {
+                return $data->professionaldata->department->name . '<br>' . '<strong style="color: #ff0000">' . $data->professionaldata->designation->name . '</strong>';
+            })
+            ->editColumn('joining_date', function ($data) {
+                return $data->professionaldata->joining_date ;
+            })
+//            ->editColumn('updated_at', function ($data) {
+//                $module_name = $this->module_name;
+//
+//                $diff = Carbon::now()->diffInHours($data->updated_at);
+//
+//                if ($diff < 25) {
+//                    return $data->updated_at->diffForHumans();
+//                } else {
+//                    return $data->updated_at->isoFormat('llll');
+//                }
+//            })
+            ->rawColumns(['avatar','joining_date','machine_user_id','name','desi_depart','mobile','action'])
+//            ->orderColumns(['id'], '-:column $1')
             ->make(true);
     }
 
@@ -134,7 +158,8 @@ class ManageEmployeesController extends BackendBaseController
         $module_action = 'Create';
 
         $companies = Company::select('id','name')->get();
-        $users = User::whereNotIn('id',[auth()->user()->id])->select('id','name')->get();
+//        $users = User::whereNotIn('id',[auth()->user()->id])->select('id','name')->get();
+        $users = User::select('id','name')->get();
         $titles = Title::select('id','name')->get();
         $religions = Religion::select('id','name')->get();
         $bangladesh = Bangladesh::select('district')->groupBy('district')
@@ -145,6 +170,8 @@ class ManageEmployeesController extends BackendBaseController
         $manage_designation = ManageDesignation::select('id','name')->get();
         $working_status = WorkingStatus::select('id','name')->get();
         $banks = Bank::select('id','name')->get();
+
+
 
         logUserAccess($module_title.' '.$module_action);
 
@@ -183,6 +210,7 @@ class ManageEmployeesController extends BackendBaseController
                 'last_name' => $request->last_name,
                 'email' => $request->email,
                 'mobile'=>$request->mobile,
+                'machine_user_id'=>$request->machine_user_id,
                 'gender'=>$request->gender,
                 'date_of_birth'=>$request->date_of_birth,
                 'password' => Hash::make('12345678'),
@@ -200,6 +228,7 @@ class ManageEmployeesController extends BackendBaseController
             'last_name' => $request->last_name,
             'email' => $request->email,
             'mobile'=>$request->mobile,
+            'machine_user_id'=>$request->machine_user_id,
             'gender'=>$request->gender,
             'date_of_birth'=>$request->date_of_birth,
             'password' => Hash::make('12345678'),
@@ -320,7 +349,7 @@ class ManageEmployeesController extends BackendBaseController
         $working_status = WorkingStatus::select('id','name')->get();
         $banks = Bank::select('id','name')->get();
 
-        $single_data = ManageEmployee::with('professionaldata')->where('user_id',$id)->first();
+        $single_data = User::with('personaldata','professionaldata')->where('id',$id)->first();
 
         logUserAccess($module_title.' '.$module_action.' | Id: '.$$module_name_singular->id);
 
@@ -343,7 +372,24 @@ class ManageEmployeesController extends BackendBaseController
 
         $module_action = 'Update';
 
-
+        $user = User::updateOrInsert([
+            'id'=>$request->user_id,
+        ],[
+            'name' => $request->first_name . ' ' . $request->first_name,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'mobile'=>$request->mobile,
+            'machine_user_id'=>$request->machine_user_id,
+            'gender'=>$request->gender,
+            'date_of_birth'=>$request->date_of_birth,
+            'avatar'=>'abc.jpg',
+            'last_login'=>Carbon::now(),
+            'created_by'=>auth()->user()->id,
+            'email_verified_at' => Carbon::now(),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
 //          pd = personal data
             ManageEmployee::updateOrInsert(
                 [
@@ -383,10 +429,10 @@ class ManageEmployeesController extends BackendBaseController
             if($pd){
                 ProfessionalEmployee::updateOrInsert(
                     [
-                        'emp_personals_id'=>$pd->id,
+                        'user_id'=>$request->user_id,
                     ],
                     [
-                        'emp_personals_id'=>$pd->id,
+                        'user_id'=>$request->user_id,
                         'department_id'=>$request->department_id,
                         'section_id'=>$request->section_id,
                         'designation_id'=>$request->designation_id,

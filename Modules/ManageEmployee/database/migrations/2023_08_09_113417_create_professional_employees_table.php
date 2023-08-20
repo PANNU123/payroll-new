@@ -19,8 +19,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('RESTRICT');
 
-            $table->unsignedBigInteger('emp_personals_id')->nullable();
-            $table->foreign('emp_personals_id')->references('id')->on('manageemployees')->onDelete('RESTRICT');
+//            $table->unsignedBigInteger('emp_personals_id')->nullable();
+//            $table->foreign('emp_personals_id')->references('id')->on('manageemployees')->onDelete('RESTRICT');
 
             $table->unsignedBigInteger('department_id')->nullable();
             $table->foreign('department_id')->references('id')->on('managedepartments')->onDelete('RESTRICT');

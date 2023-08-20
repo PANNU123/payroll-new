@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
+use Modules\ManageEmployee\Models\ManageEmployee;
+use Modules\ManageEmployee\Models\ProfessionalEmployee;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -30,11 +32,11 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         'password_confirmation',
     ];
 
-    protected $casts = [
-        'deleted_at' => 'datetime',
-        'date_of_birth' => 'datetime',
-        'email_verified_at' => 'datetime',
-    ];
+//    protected $casts = [
+//        'deleted_at' => 'datetime',
+//        'date_of_birth' => 'date',
+//        'email_verified_at' => 'datetime',
+//    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -114,5 +116,14 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     public function routeNotificationForSlack($notification)
     {
         return env('SLACK_NOTIFICATION_WEBHOOK');
+    }
+
+
+    public function professionaldata(){
+        return $this->hasOne(ProfessionalEmployee::class,'user_id');
+    }
+
+    public function personaldata(){
+        return $this->hasOne(ManageEmployee::class,'user_id');
     }
 }

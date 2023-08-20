@@ -9,7 +9,7 @@
                 $field_lable = label_case($field_name);
                 $field_placeholder = $field_lable;
                 $required = "";
-                $default_value = $single_data->professionaldata->pay_grade ?? "";
+                $default_value = $single_data->first_name ?? "";
                 ?>
                 {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
                 {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->value($default_value)->attributes(["$required"]) }}
@@ -24,7 +24,7 @@
             $field_lable = label_case($field_name);
             $field_placeholder = $field_lable;
             $required = "";
-            $default_value = $single_data->professionaldata->status_change_date ?? "";
+            $default_value = $single_data->last_name ?? "";
             ?>
             {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
             {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->value($default_value)->attributes(["$required"]) }}
@@ -37,7 +37,7 @@
                 $field_lable = label_case($field_name);
                 $field_placeholder = $field_lable;
                 $required = "";
-                $default_value = $single_data->professionaldata->status_change_date ?? "";
+                $default_value = $single_data->email ?? "";
                 ?>
                 {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
                 {{ html()->email($field_name)->placeholder($field_placeholder)->class('form-control')->value($default_value)->attributes(["$required"]) }}
@@ -50,12 +50,28 @@
                 $field_lable = label_case($field_name);
                 $field_placeholder = $field_lable;
                 $required = "";
-                $default_value = $single_data->professionaldata->status_change_date ?? "";
+                $default_value = $single_data->mobile ?? "";
+                ?>
+                {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
+                {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->value($default_value)->attributes(["$required"]) }}
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-4 mb-3">
+            <div class="form-group">
+                <?php
+                $field_name = 'machine_user_id';
+                $field_lable = label_case($field_name);
+                $field_placeholder = $field_lable;
+                $required = "";
+                $default_value = $single_data->machine_user_id ?? "";
                 ?>
                 {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
                 {{ html()->number($field_name)->placeholder($field_placeholder)->class('form-control')->value($default_value)->attributes(["$required"]) }}
             </div>
         </div>
+
+
         <div class="col-12 col-sm-4 mb-3">
             <div class="form-group">
                 <?php
@@ -63,10 +79,10 @@
                 $field_lable = label_case($field_name);
                 $field_placeholder = "-- Select an option --";
                 $required = "";
-                $selected_option = $single_data->is_printed ?? "";
+                $selected_option = $single_data->gender ?? "";
                 $select_options = [
-                    'M'=>'Male',
-                    'F'=>'Female',
+                    'Male'=>'Male',
+                    'Female'=>'Female',
                 ];
                 ?>
                 {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
@@ -80,7 +96,7 @@
                 $field_lable = label_case($field_name);
                 $field_placeholder = $field_lable;
                 $required = "";
-                $default_value = $single_data->national_id ?? "";
+                $default_value = $single_data->date_of_birth ?? "";
                 ?>
                 {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
                 {{ html()->date($field_name)->placeholder($field_placeholder)->class('form-control')->value($default_value)->attributes(["$required"]) }}
@@ -93,7 +109,7 @@
                 $field_lable = label_case($field_name);
                 $field_placeholder = $field_lable;
                 $required = "";
-                $default_value = $single_data->national_id ?? "";
+                $default_value = $single_data->avatar ?? "";
                 ?>
                 {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
                 {{ html()->file($field_name)->class('form-control')->attributes(["$required"]) }}

@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(AuthTableSeeder::class);
         $this->call(HrmTableSeeder::class);
+        $this->call(EmployeeTableSeeder::class);
 
         Schema::enableForeignKeyConstraints();
     }

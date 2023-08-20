@@ -31,14 +31,16 @@
                 <div class="col">
                     {{ html()->modelForm($$module_name_singular, 'PATCH', route("backend.$module_name.update", $$module_name_singular))->acceptsFiles()->class('form')->open() }}
 
+                    <h3>Credential Information</h3>
+                    @include ("$module_path.$module_name.form_3")
+                    <br /><br />
                     <h3>Personal Information</h3>
                     <br>
-                    @include ("$module_path.$module_name.form",['single_data'=>$single_data,'companies'=>$companies,'users'=>$users,'titles'=>$titles,'religions'=>$religions])
+                    @include ("$module_path.$module_name.form",['companies'=>$companies,'users'=>$users,'titles'=>$titles,'religions'=>$religions])
                     <br /><br />
                     <h3>Professional Information</h3>
                     <br>
-                    @include ("$module_path.$module_name.form_2",['single_data'=>$single_data,'manage_designation'=>$manage_designation,'manage_department'=>$manage_department,'section'=>$section,'working_status'=>$working_status,'banks'=>$banks,])
-
+                    @include ("$module_path.$module_name.form_2",['manage_designation'=>$manage_designation,'manage_department'=>$manage_department,'section'=>$section,'working_status'=>$working_status,'banks'=>$banks,])
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
