@@ -1,0 +1,13 @@
+{
+    "name": "EmployeePosting",
+    "alias": "employeeposting",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\EmployeePosting\\Providers\\EmployeePostingServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

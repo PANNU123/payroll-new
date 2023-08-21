@@ -60,7 +60,7 @@ $notifications_latest = optional($notifications)->take(5);
             <li class="nav-item dropdown">
                 <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     <div class="avatar avatar-md">
-                        <img class="avatar-img" src="{{ asset(ProfileImage().auth()->user()->avatar)  ? asset(auth()->user()->avatar) : asset(auth()->user()->avatar) }}" alt="{{ asset(auth()->user()->name) }}">
+                        <img class="avatar-img" src="{{ asset(ProfileImage().auth()->user()->avatar) }}" alt="{{ asset(auth()->user()->name) }}">
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end pt-0">

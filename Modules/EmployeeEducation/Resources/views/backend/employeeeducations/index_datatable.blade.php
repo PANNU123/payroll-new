@@ -48,19 +48,17 @@
                 <table id="datatable" class="table table-bordered table-hover table-responsive-sm">
                     <thead>
                         <tr>
-                            <th>avatar </th>
-                            <th>Emp ID</th>
                             <th>
-                                @lang("manageemployee::text.name")
+                                #
                             </th>
-                            <th>Designation<br>Department</th>
-                            <th>Joining Date</th>
-                            <th>Mobile</th>
-{{--                            <th>--}}
-{{--                                @lang("manageemployee::text.updated_at")--}}
-{{--                            </th>--}}
+                            <th>
+                                @lang("employeeeducation::text.name")
+                            </th>
+                            <th>
+                                @lang("employeeeducation::text.updated_at")
+                            </th>
                             <th class="text-end">
-                                @lang("manageemployee::text.action")
+                                @lang("employeeeducation::text.action")
                             </th>
                         </tr>
                     </thead>
@@ -82,8 +80,8 @@
             </div>
         </div>
     </div>
-{{--    @include ("manageemployee::backend.$module_name.edumodal")--}}
 </div>
+
 @endsection
 
 @push ('after-styles')
@@ -95,77 +93,33 @@
 @push ('after-scripts')
 <!-- DataTables Core and Extensions -->
 <script type="module" src="{{ asset('vendor/datatable/datatables.min.js') }}"></script>
-<script>
 
-
-
-</script>
 <script type="module">
-    $(document).ready(function() {
-        $('#datatable').DataTable({
-            processing: true,
-            serverSide: true,
-            autoWidth: true,
-            responsive: true,
-            ajax: '{{ route("backend.$module_name.index_data") }}',
-            columns: [
-                {
-                    data: 'avatar',
-                    name: 'avatar'
-                },
-                {
-                    data: 'machine_user_id',
-                    name: 'machine_user_id'
-                },
-
-                {
-                    data: 'name',
-                    name: 'name'
-                },
-                {
-                    data: 'desi_depart',
-                    name: 'desi_depart'
-                },
-                {
-                    data: 'joining_date',
-                    name: 'joining_date'
-                },
-                {
-                    data: 'mobile',
-                    name: 'mobile'
-                },
-
-                // {
-                //     data: 'updated_at',
-                //     name: 'updated_at'
-                // },
-                {
-                    data: 'action',
-                    name: 'action',
-                    orderable: false,
-                    searchable: false
-                }
-            ],
-            // initComplete: function () {
-            //     $('.createNewEduBtn').click(function () {
-            //         $('#saveBtn').html("Create Education");
-            //         $('#category_id').val('');
-            //         $('#CategoryForm').trigger("reset");
-            //         $('#modelHeading').html("Education Add Form");
-            //         $('#ajaxModelCategory').modal('show');
-            //     });
-            //
-            //     $('.createNewPostingBtn').click(function () {
-            //         $('#saveBtn').html("Create Posting");
-            //         $('#category_id').val('');
-            //         $('#CategoryForm').trigger("reset");
-            //         $('#modelHeading').html("Posting Add Form");
-            //         $('#ajaxModelCategory').modal('show');
-            //     });
-            //
-            // }
-        });
-    })
+    $('#datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        autoWidth: true,
+        responsive: true,
+        ajax: '{{ route("backend.$module_name.index_data") }}',
+        columns: [{
+                data: 'id',
+                name: 'id'
+            },
+            {
+                data: 'name',
+                name: 'name'
+            },
+            {
+                data: 'updated_at',
+                name: 'updated_at'
+            },
+            {
+                data: 'action',
+                name: 'action',
+                orderable: false,
+                searchable: false
+            }
+        ]
+    });
 </script>
-
 @endpush

@@ -106,12 +106,15 @@ class ManageEmployeesController extends BackendBaseController
             ->addColumn('action', function ($data) {
                     $btn = '<a  href="'.route('backend.'.$this->module_name.'.edit',$data->id).'" class="btn btn-primary btn-sm"><i class="fas fa-desktop"></i></a>';
                     $btn =$btn.'<a style="margin-left:3px" href="'.route('backend.'.$this->module_name.'.edit',$data->id).'" class="btn btn-info btn-sm"><i class="fas fa-wrench"></i></a>';
-                    $btn = $btn.'<a style="margin-left:3px" href="javascript:void(0)" class="btn btn-success btn-sm createNewEduBtn"><i class="fa-solid fa-book-open-reader"></i></a>';
-                    $btn = $btn.'<a style="margin-left:3px" href="javascript:void(0)" class="btn btn-warning btn-sm createNewPostingBtn"><i class="fa-solid fa-plane-departure"></i></a>';
-//                    $btn = '<a href="" class="btn btn-success btn-sm"><i class="fas fa-wrench""></i></a>';
+                    $btn = $btn.'<a style="margin-left:3px" href="'.route('backend.employeeeducations.index','data='.$data->id).'" class="btn btn-success btn-sm"><i class="fa-solid fa-book-open-reader"></i></a>';
+                    $btn = $btn.'<a style="margin-left:3px" href="javascript:void(0)" class="btn btn-warning btn-sm"><i class="fa-solid fa-plane-departure"></i></a>';
                 return $btn;
             })
-            ->editColumn('avatar', '<strong>Avatar</strong>')
+//            ->editColumn('avatar', '<strong>Avatar</strong>')
+            ->editColumn('avatar', function ($data) {
+                $url = asset(ProfileImage() . $data->avatar);
+                return '<img src=' . $url . ' border="0" width="40" class="img-rounded" align="center" />';
+            })
             ->editColumn('machine_user_id', function ($data) {
                 $joining_date = $data->professionaldata->joining_date;
                 $carbonDate = Carbon::parse($joining_date);
@@ -372,6 +375,14 @@ class ManageEmployeesController extends BackendBaseController
 
         $module_action = 'Update';
 
+        $user = User::where('id',$id)->first();
+
+        if(!empty($request->avatar)) {
+            $avatar = fileUpload($request['avatar'], ProfileImage());
+        }else{
+            $avatar = $user->avatar;
+        }
+
         $user = User::updateOrInsert([
             'id'=>$request->user_id,
         ],[
@@ -383,7 +394,7 @@ class ManageEmployeesController extends BackendBaseController
             'machine_user_id'=>$request->machine_user_id,
             'gender'=>$request->gender,
             'date_of_birth'=>$request->date_of_birth,
-            'avatar'=>'abc.jpg',
+            'avatar'=>$avatar,
             'last_login'=>Carbon::now(),
             'created_by'=>auth()->user()->id,
             'email_verified_at' => Carbon::now(),

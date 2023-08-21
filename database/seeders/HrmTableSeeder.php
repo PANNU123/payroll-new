@@ -83,23 +83,103 @@ class HrmTableSeeder extends Seeder
         ]);
         //end title
 
+
         //manage title
         Religion::create([
             'user_id'=>1,
             'name'=>'Islam',
         ]);
+        Religion::create([
+            'user_id'=>1,
+            'name'=>'Hindu',
+        ]);
+        Religion::create([
+            'user_id'=>1,
+            'name'=>'buddha',
+        ]);
+        Religion::create([
+            'user_id'=>1,
+            'name'=>'kristen',
+        ]);
 
         LeaveCategory::create([
             'user_id'=>1,
             'company_id'=>1,
-            'name'=>'Islam',
-            'short_code'=>'Islam',
+            'name'=>'Casual',
+            'short_code'=>'Cas',
+        ]);
+        LeaveCategory::create([
+            'user_id'=>1,
+            'company_id'=>1,
+            'name'=>'Sick',
+            'short_code'=>'Si',
+        ]);
+        LeaveCategory::create([
+            'user_id'=>1,
+            'company_id'=>1,
+            'name'=>'Earn',
+            'short_code'=>'Ea',
+        ]);
+        LeaveCategory::create([
+            'user_id'=>1,
+            'company_id'=>1,
+            'name'=>'Alternative',
+            'short_code'=>'Alt',
+        ]);
+        LeaveCategory::create([
+            'user_id'=>1,
+            'company_id'=>1,
+            'name'=>'Maternity',
+            'short_code'=>'Mat',
+        ]);
+        LeaveCategory::create([
+            'user_id'=>1,
+            'company_id'=>1,
+            'name'=>'Training',
+            'short_code'=>'Trn',
+        ]);
+        LeaveCategory::create([
+            'user_id'=>1,
+            'company_id'=>1,
+            'name'=>'Special',
+            'short_code'=>'Spe',
+        ]);
+        LeaveCategory::create([
+            'user_id'=>1,
+            'company_id'=>1,
+            'name'=>'Without Pay Leave',
+            'short_code'=>'WPL',
         ]);
 
         WorkingStatus::create([
             'user_id'=>1,
             'company_id'=>1,
-            'name'=>'ABC',
+            'name'=>'Regular',
+        ]);
+        WorkingStatus::create([
+            'user_id'=>1,
+            'company_id'=>1,
+            'name'=>'Provisional',
+        ]);
+        WorkingStatus::create([
+            'user_id'=>1,
+            'company_id'=>1,
+            'name'=>'Contractual',
+        ]);
+        WorkingStatus::create([
+            'user_id'=>1,
+            'company_id'=>1,
+            'name'=>'Resigned',
+        ]);
+        WorkingStatus::create([
+            'user_id'=>1,
+            'company_id'=>1,
+            'name'=>'Dismissed',
+        ]);
+        WorkingStatus::create([
+            'user_id'=>1,
+            'company_id'=>1,
+            'name'=>'Discontinued',
         ]);
 
         LeaveRegister::create([

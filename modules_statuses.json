@@ -28,5 +28,7 @@
     "Bangladesh": true,
     "LeaveRegister": true,
     "LeaveApplication": true,
-    "PublicHoliday": true
+    "PublicHoliday": true,
+    "EmployeeEducation": true,
+    "EmployeePosting": true
 }

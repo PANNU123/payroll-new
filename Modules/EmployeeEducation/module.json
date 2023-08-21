@@ -1,0 +1,13 @@
+{
+    "name": "EmployeeEducation",
+    "alias": "employeeeducation",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\EmployeeEducation\\Providers\\EmployeeEducationServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
